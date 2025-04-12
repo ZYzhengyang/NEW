@@ -14,7 +14,8 @@ import {
   AppstoreOutlined,
   RightOutlined,
   BellOutlined,
-  DownOutlined
+  DownOutlined,
+  ShoppingOutlined
 } from '@ant-design/icons'
 import '../App.css'
 
@@ -42,15 +43,77 @@ function Layout() {
     setCollapsed(collapsed);
   };
 
-  const userMenu = (
-    <Menu theme="dark">
-      <Menu.Item key="profile">个人中心</Menu.Item>
-      <Menu.Item key="orders">我的订单</Menu.Item>
-      <Menu.Item key="settings">账号设置</Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="logout">退出登录</Menu.Item>
-    </Menu>
-  );
+  // 用户下拉菜单项
+  const userMenuItems = [
+    { key: 'profile', label: '个人中心' },
+    { key: 'orders', label: '我的订单' },
+    { key: 'settings', label: '账号设置' },
+    { type: 'divider' },
+    { key: 'logout', label: '退出登录' }
+  ];
+
+  // 顶部导航菜单项
+  const navMenuItems = [
+    { 
+      key: '/', 
+      icon: <HomeOutlined />, 
+      label: <Link to="/">首页</Link> 
+    },
+    { 
+      key: '/store', 
+      icon: <AppstoreOutlined />, 
+      label: <Link to="/store">素材库</Link> 
+    },
+    { 
+      key: '/hot', 
+      icon: <FireOutlined />, 
+      label: <Link to="/hot">热门</Link> 
+    },
+    { 
+      key: '/packs', 
+      icon: <ShoppingOutlined />, 
+      label: <Link to="/packs">素材包</Link> 
+    }
+  ];
+
+  // 侧边栏分类菜单项
+  const categoryMenuItems = [
+    { 
+      key: 'motion', 
+      icon: <AppstoreOutlined />, 
+      label: <Link to="/category/motion">动作</Link> 
+    },
+    { 
+      key: 'expression', 
+      icon: <AppstoreOutlined />, 
+      label: <Link to="/category/expression">表情</Link> 
+    },
+    { 
+      key: 'scene', 
+      icon: <AppstoreOutlined />, 
+      label: <Link to="/category/scene">场景</Link> 
+    },
+    { 
+      key: 'prop', 
+      icon: <AppstoreOutlined />, 
+      label: <Link to="/category/prop">道具</Link> 
+    },
+    { 
+      key: 'character', 
+      icon: <AppstoreOutlined />, 
+      label: <Link to="/category/character">角色</Link> 
+    },
+    { 
+      key: 'effect', 
+      icon: <AppstoreOutlined />, 
+      label: <Link to="/category/effect">特效</Link> 
+    },
+    { 
+      key: 'sound', 
+      icon: <AppstoreOutlined />, 
+      label: <Link to="/category/sound">音效</Link> 
+    }
+  ];
 
   return (
     <AntLayout style={{ minHeight: '100vh' }}>
@@ -80,20 +143,13 @@ function Layout() {
           </Col>
           
           <Col span={10}>
-            <Menu theme="dark" mode="horizontal" selectedKeys={[location.pathname]} style={{ border: 'none' }}>
-              <Menu.Item key="/" icon={<HomeOutlined />}>
-                <Link to="/">首页</Link>
-              </Menu.Item>
-              <Menu.Item key="/store" icon={<AppstoreOutlined />}>
-                <Link to="/store">素材库</Link>
-              </Menu.Item>
-              <Menu.Item key="/hot" icon={<FireOutlined />}>
-                <Link to="/hot">热门</Link>
-              </Menu.Item>
-              <Menu.Item key="/packs" icon={<ShoppingOutlined />}>
-                <Link to="/packs">素材包</Link>
-              </Menu.Item>
-            </Menu>
+            <Menu 
+              theme="dark" 
+              mode="horizontal" 
+              selectedKeys={[location.pathname]} 
+              style={{ border: 'none' }}
+              items={navMenuItems}
+            />
           </Col>
           
           <Col span={9} style={{ textAlign: 'right' }}>
@@ -119,7 +175,10 @@ function Layout() {
                 </Badge>
               </Col>
               <Col>
-                <Dropdown overlay={userMenu} placement="bottomRight">
+                <Dropdown 
+                  menu={{ items: userMenuItems }}
+                  placement="bottomRight"
+                >
                   <Button type="text" style={{ height: '64px', padding: '0 8px' }}>
                     <Avatar size="small" icon={<UserOutlined />} style={{ marginRight: '8px', backgroundColor: '#D4AF37' }} />
                     <span style={{ color: '#fff' }}>用户名</span>
@@ -152,29 +211,13 @@ function Layout() {
               {collapsed ? '分类' : '素材分类'}
             </span>
           </div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['motion']} style={{ borderRight: 'none' }}>
-            <Menu.Item key="motion" icon={<AppstoreOutlined />}>
-              <Link to="/category/motion">动作</Link>
-            </Menu.Item>
-            <Menu.Item key="expression" icon={<AppstoreOutlined />}>
-              <Link to="/category/expression">表情</Link>
-            </Menu.Item>
-            <Menu.Item key="scene" icon={<AppstoreOutlined />}>
-              <Link to="/category/scene">场景</Link>
-            </Menu.Item>
-            <Menu.Item key="prop" icon={<AppstoreOutlined />}>
-              <Link to="/category/prop">道具</Link>
-            </Menu.Item>
-            <Menu.Item key="character" icon={<AppstoreOutlined />}>
-              <Link to="/category/character">角色</Link>
-            </Menu.Item>
-            <Menu.Item key="effect" icon={<AppstoreOutlined />}>
-              <Link to="/category/effect">特效</Link>
-            </Menu.Item>
-            <Menu.Item key="sound" icon={<AppstoreOutlined />}>
-              <Link to="/category/sound">音效</Link>
-            </Menu.Item>
-          </Menu>
+          <Menu 
+            theme="dark" 
+            mode="inline" 
+            defaultSelectedKeys={['motion']} 
+            style={{ borderRight: 'none' }}
+            items={categoryMenuItems}
+          />
           
           <Divider style={{ margin: '16px 0', borderColor: '#333' }} />
           

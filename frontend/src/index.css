@@ -1,12 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 增强黑金风格和视觉效果 */
 :root {
-  --primary-color: #D4AF37; /* 金色 */
-  --primary-dark: #AA8C2C;  /* 深金色 */
+  --primary-color: #D4AF37; /* 金色主题色 */
+  --primary-light: #F5D76E;
+  --primary-dark: #9B7D2D;
+  --bg-dark: #0D0D0D;
+  --bg-darker: #080808;
   --text-color: #ffffff;
   --text-secondary: #999999;
   --bg-color: #0A0A0A;      /* 黑色背景 */
   --bg-secondary: #121212;  /* 次级黑色背景 */
   --border-color: #333333;
-  --card-bg: #222222;
+  --card-bg: rgba(25, 25, 25, 0.8);
+  --card-hover-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
   
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -20,6 +29,35 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 17, 17, 17;
+}
+
+/* 优化滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* 优化选择文本效果 */
+::selection {
+  background-color: rgba(212, 175, 55, 0.3);
+  color: white;
 }
 
 body {
@@ -30,8 +68,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #111;
-  color: #fff;
+  background-color: var(--bg-dark);
+  color: #FFF;
+
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  overflow-x: hidden;
 }
 
 code {
@@ -218,4 +265,223 @@ code {
   .main-banner {
     height: 300px !important;
   }
+}
+
+/* ActorCore特定全局样式 */
+.text-yellow-actorcore {
+  color: #D4AF37;
+}
+
+.bg-yellow-actorcore {
+  background-color: #D4AF37;
+}
+
+.border-yellow-actorcore {
+  border-color: #D4AF37;
+}
+
+/* Ant Design暗黑主题调整 */
+.ant-btn-primary {
+  background-color: #D4AF37;
+  border-color: #D4AF37;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background-color: #E5C250;
+  border-color: #E5C250;
+}
+
+.ant-input-affix-wrapper {
+  background-color: #333;
+  border-color: #444;
+}
+
+.ant-input-affix-wrapper-focused,
+.ant-input-affix-wrapper:focus {
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.ant-select-selector {
+  background-color: #333 !important;
+  border-color: #444 !important;
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2) !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #D4AF37;
+}
+
+.ant-tabs-ink-bar {
+  background-color: #D4AF37;
+}
+
+.ant-tag {
+  margin-bottom: 8px;
+}
+
+.ant-slider-track {
+  background-color: #D4AF37;
+}
+
+.ant-slider-handle {
+  border-color: #D4AF37;
+}
+
+/* 全局链接样式 */
+a {
+  color: var(--primary-color);
+  transition: color 0.2s, transform 0.2s;
+}
+
+a:hover {
+  color: var(--primary-light);
+}
+
+/* 优化图片加载效果 */
+img {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+img.loaded, img[src] {
+  opacity: 1;
+}
+
+/* 为卡片添加发光效果 */
+.card-glow {
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+/* 在现有CSS后追加以下动画相关样式 */
+
+/* 动画定义 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slowFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 动画类 */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-slow-float {
+  animation: slowFloat 6s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* 交错动画 */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+/* 卡片悬停效果 */
+.card-lift {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* 金色边框发光效果 */
+.gold-border-glow {
+  box-shadow: 0 0 5px rgba(212, 175, 55, 0.3), inset 0 0 5px rgba(212, 175, 55, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.gold-border-glow:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5), inset 0 0 10px rgba(212, 175, 55, 0.2);
 } 

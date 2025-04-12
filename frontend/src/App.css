@@ -1,0 +1,46 @@
+/* 基础样式 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5;
+}
+
+/* 通用类 */
+.gold-text {
+  color: #D4AF37;
+}
+
+/* 黑色主题搜索框 */
+.dark-search .ant-input,
+.dark-search .ant-input-group-addon,
+.dark-search .ant-btn {
+  background-color: #1f1f1f !important;
+  border-color: #333 !important;
+  color: #fff !important;
+}
+
+.dark-search .ant-input::placeholder {
+  color: #666 !important;
+}
+
+.dark-search .ant-input-search-button {
+  background-color: #D4AF37 !important;
+  border-color: #D4AF37 !important;
+}
+
+/* 顶部通知栏 */
+.top-notification {
+  width: 100%;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .ant-layout-sider {
+    display: none;
+  }
+} 

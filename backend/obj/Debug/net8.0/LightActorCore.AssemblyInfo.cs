@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LightActorCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56554116018171f7e1f57726059aa72aedc46c07")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+050101db9441aa97da8c46a9cf0eeb5c1900b37b")]
 [assembly: System.Reflection.AssemblyProductAttribute("LightActorCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LightActorCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
