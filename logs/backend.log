@@ -1,0 +1,6 @@
+H:\网站代码\HuaXian源码\light-actorcore\backend\src\Services\AssetService.cs(8,29): error CS0535: “AssetService”不实现接口成员“IAssetService.GetByIdAsync(long)” [H:\网站代码\HuaXian源码\light-actorcore\backend\LightActorCore.csproj]
+H:\网站代码\HuaXian源码\light-actorcore\backend\src\Services\AssetService.cs(8,29): error CS0535: “AssetService”不实现接口成员“IAssetService.GetAllAsync()” [H:\网站代码\HuaXian源码\light-actorcore\backend\LightActorCore.csproj]
+H:\网站代码\HuaXian源码\light-actorcore\backend\src\Services\AssetService.cs(8,29): error CS0535: “AssetService”不实现接口成员“IAssetService.UpdateAsync(Asset)” [H:\网站代码\HuaXian源码\light-actorcore\backend\LightActorCore.csproj]
+H:\网站代码\HuaXian源码\light-actorcore\backend\src\Services\AssetService.cs(8,29): error CS0535: “AssetService”不实现接口成员“IAssetService.DeleteAsync(long)” [H:\网站代码\HuaXian源码\light-actorcore\backend\LightActorCore.csproj]
+
+生成失败。请修复生成错误并重新运行。
